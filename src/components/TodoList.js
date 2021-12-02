@@ -28,11 +28,7 @@ function TodoList() {
     setTodo(todos => [...todos, { task, isCompleted: false }])
     setTask('')
   }
-  const handleRemoveTask = index => {
-    const newTodos = [...todos]
-    newTodos.splice(index, 1)
-    setTodo(newTodos)
-  }
+  
   const handleUpdateTask = index => {
     let newTodos = todos.map((todo, todoIndex) => {
       if (todoIndex === index) {
