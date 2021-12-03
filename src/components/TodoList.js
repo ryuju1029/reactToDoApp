@@ -41,8 +41,8 @@ function TodoList() {
     SetTodo(newTodos)
   }
   const handleUpdateTask = index => {
-    let newTodos = todos.map((todo,todoIndex) => {
-      if(todoIndex === index ){
+    let newTodos = todos.map((todo, todoIndex) => {
+      if (todoIndex === index) {
         {/*
           isCompletedの値がtureならfalse falseならtureにする
         */}
@@ -51,14 +51,14 @@ function TodoList() {
       return todo;
     })
     SetTodo(newTodos);
-  } 
+  }
 
 
   return (
     <div>
       <h1>ToDo List</h1>
       <form onSubmit={handleSubmit}>
-        add Task : <input value={task} placeholder="Add New Task" onChange={handleNewTask} />
+        タスクを追加 : <input value={task} placeholder="Add New Task" onChange={handleNewTask} />
       </form>
       {/*
      　　　map関数は配列内の要素をコールバックで処理して、配列としてreturnするメソッド
@@ -66,7 +66,12 @@ function TodoList() {
       */}
       <ul>
         {todos.map((todo, index) => (
-          <li key={index} style={ todo.isCompleted === true ? {textDecorationLine: 'line-through'}:{}}>{todo.task}<span onClick={() => handleUpdateTask(index)}>X</span></li>
+          <li key={index} style={todo.isCompleted === true ? { textDecorationLine: 'line-through' } : {}}>{todo.task}
+            <span onClick={() => handleUpdateTask(index)}>
+              <button>完了</button></span>
+            <span onClick={() => handleRemoveTask(index)}>
+              <button>削除</button></span>
+          </li>
         ))}
       </ul>
     </div>
