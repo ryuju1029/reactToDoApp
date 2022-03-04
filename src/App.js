@@ -18,7 +18,9 @@ export const App = () => {
 
   const onClickDelete = (index) => {
     const newTodos = [...incompleteTodos];
-    newTodos.splice(index, 1);
+    const newTodos = newTodos.splice(index, 1);
+    console.log("index", index);
+    console.log("newTodos", newTodos);
     setIncompleteTodos(newTodos);
   }
 
@@ -40,10 +42,10 @@ export const App = () => {
 
   return (
     <>
-      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} disabled={incompleteTodos.length >= 5}/>
+      <InputTodo todoText={todoText} onChange={onChangeTodoText} onClick={onClickAdd} disabled={incompleteTodos.length >= 5} />
       {incompleteTodos.length >= 5 && <p style={{ color: "red" }}>登録できるタスクは5個までです</p>}
       <IncompleteTodos todos={incompleteTodos} onClickComplete={onClickComplete} onClickDelete={onClickDelete} />
-      <CompleteTodos todos={completeTodos} onClickBack={onClickBack}/>
+      <CompleteTodos todos={completeTodos} onClickBack={onClickBack} />
     </>
 
   )
